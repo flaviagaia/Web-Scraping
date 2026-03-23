@@ -36,13 +36,31 @@ Ferramentas usadas no fluxo:
 
 - `24` artigos coletados automaticamente da `Agência Brasil`
 - cobertura equilibrada: `12` de `política` e `12` de `economia`
-- `93` entidades extraídas
+- `92` entidades extraídas
 - datas de publicação disponíveis em todos os artigos coletados
 - principais entidades encontradas: `Brasil`, `Estados Unidos`, `Banco Central`, `Lula`
-- palavras-chave mais frequentes: `presidente`, `banco`, `brasil`, `governo`, `federal`
+- palavras-chave mais frequentes após limpeza: `banco`, `brasil`, `lula`, `estados`, `deputada`
 
 Fonte pública usada nesta execução:
 - [Agência Brasil](https://agenciabrasil.ebc.com.br/)
+
+## Exemplos visuais
+
+**Distribuição por tema**
+
+![Artigos por tema](./assets/articles_by_theme.png)
+
+**Entidades mais frequentes**
+
+![Top entidades](./assets/top_entities.png)
+
+**Palavras-chave mais frequentes**
+
+![Top keywords](./assets/top_keywords.png)
+
+**Nuvem de palavras**
+
+![Word cloud](./assets/wordcloud_news.png)
 
 ## O que o projeto faz
 
@@ -180,6 +198,7 @@ Tools used across the pipeline:
 - [src/scraper.py](./src/scraper.py): article discovery and parsing
 - [src/nlp_pipeline.py](./src/nlp_pipeline.py): NER, keywords, and NLP metadata
 - [src/dashboard_utils.py](./src/dashboard_utils.py): loading and rendering helpers
+- [assets/](./assets): generated charts and word cloud previews
 - [tests/test_pipeline.py](./tests/test_pipeline.py): automated test
 
 ## Run
@@ -205,13 +224,31 @@ This means:
 
 - `24` articles automatically collected from `Agência Brasil`
 - balanced coverage: `12` from `politics` and `12` from `economy`
-- `93` extracted entities
+- `92` extracted entities
 - publication dates available for all collected articles
 - top entities found: `Brasil`, `Estados Unidos`, `Banco Central`, `Lula`
-- most frequent keywords: `presidente`, `banco`, `brasil`, `governo`, `federal`
+- most frequent cleaned keywords: `banco`, `brasil`, `lula`, `estados`, `deputada`
 
 Public source used in this execution:
 - [Agência Brasil](https://agenciabrasil.ebc.com.br/)
+
+## Visual examples
+
+**Theme distribution**
+
+![Articles by theme](./assets/articles_by_theme.png)
+
+**Most frequent entities**
+
+![Top entities](./assets/top_entities.png)
+
+**Most frequent keywords**
+
+![Top keywords](./assets/top_keywords.png)
+
+**Word cloud**
+
+![Word cloud](./assets/wordcloud_news.png)
 
 ## Techniques used
 
