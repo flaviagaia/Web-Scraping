@@ -29,19 +29,23 @@ def load_outputs() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict]:
 
 
 def render_wordcloud(text: str):
-    wordcloud = WordCloud(width=1400, height=700, background_color="white", colormap="viridis").generate(text)
+    cleaned_text = clean_text_for_analysis(text)
+    wordcloud = WordCloud(width=1400, height=700, background_color="white", colormap="viridis").generate(cleaned_text)
     fig, ax = plt.subplots(figsize=(12, 6))
     ax.imshow(wordcloud, interpolation="bilinear")
     ax.axis("off")
     return fig
 
 
+def clean_text_for_analysis(text: str) -> str:
+    tokens = [token for token in TOKEN_PATTERN.findall(text.lower()) if token not in STOPWORDS_PT]
+    return " ".join(tokens)
+
+
 def keywords_from_texts(texts: list[str], limit: int = 30) -> pd.DataFrame:
     counts: dict[str, int] = {}
     for text in texts:
-        for token in TOKEN_PATTERN.findall(text.lower()):
-            if token in STOPWORDS_PT:
-                continue
+        for token in clean_text_for_analysis(text).split():
             counts[token] = counts.get(token, 0) + 1
 
     rows = sorted(counts.items(), key=lambda item: item[1], reverse=True)[:limit]

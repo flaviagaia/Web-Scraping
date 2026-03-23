@@ -1,5 +1,5 @@
 {
   "article_count": 24,
-  "entity_count": 93,
+  "entity_count": 92,
   "nlp_status": "spaCy unavailable in this environment: ConfigError"
 }

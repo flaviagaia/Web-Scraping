@@ -21,6 +21,13 @@ STOPWORDS_PT = {
     "os", "ou", "para", "pela", "pelas", "pelo", "pelos", "por", "qual", "que", "quem", "se",
     "sem", "ser", "seu", "seus", "sua", "suas", "sobre", "tambem", "também", "tem", "ter", "um",
     "uma", "uns", "umas", "vai", "vão", "dos", "das", "ainda", "após", "contra", "durante", "entre",
+    "disse", "afirmou", "informou", "declarou", "segundo", "sobre", "nesta", "neste", "nestas",
+    "nestes", "dessa", "desse", "desses", "dessas", "apenas", "todo", "toda", "todos", "todas",
+    "durante", "entrevista", "reportagem", "agora", "ontem", "hoje", "amanhã", "pode", "podem",
+    "deve", "devem", "sido", "estão", "estava", "força", "feira", "anos", "ano", "dia", "dias",
+    "mesmo", "mesma", "mesmos", "mesmas", "além", "apresentou", "destacou", "explicou", "discurso",
+    "governo", "presidente", "ministro", "prefeito", "cidade", "federal", "nacional", "brasileiro",
+    "brasileira", "brasileiros", "brasileiras", "país", "países",
 }
 
 RULE_BASED_ENTITIES = {
@@ -70,4 +77,3 @@ RULE_BASED_ENTITIES = {
         "receita",
     ],
 }
-
