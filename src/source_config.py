@@ -13,6 +13,8 @@ INVALID_URL_SNIPPETS = [
     "noticiahttps://",
 ]
 
+EXCLUDED_REFERENCE_TERMS: set[str] = set()
+
 STOPWORDS_PT = {
     "a", "ao", "aos", "aquela", "aquele", "aqueles", "as", "até", "com", "como", "da", "das",
     "de", "dela", "dele", "deles", "depois", "do", "dos", "e", "ela", "ele", "eles", "em", "entre",
@@ -41,7 +43,6 @@ RULE_BASED_ENTITIES = {
         "Gabriel Galípolo",
     ],
     "ORG": [
-        "Petrobras",
         "Banco Central",
         "Receita Federal",
         "Congresso Nacional",

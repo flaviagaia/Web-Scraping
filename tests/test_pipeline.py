@@ -32,10 +32,10 @@ class WebScrapingNlpPipelineTest(unittest.TestCase):
                     "source": "Agência Brasil",
                     "theme": "economia",
                     "url": "https://example.com/2",
-                    "title": "Petrobras fala sobre combustíveis",
+                    "title": "Banco Central fala sobre combustíveis",
                     "publish_date": "2026-03-22T00:00:00",
                     "authors": "Repórter Teste",
-                    "text": "A Petrobras comentou preços dos combustíveis e o impacto da inflação no Brasil.",
+                    "text": "O Banco Central comentou preços dos combustíveis e o impacto da inflação no Brasil.",
                     "summary": "Resumo 2",
                     "word_count": 13,
                 },
@@ -51,4 +51,3 @@ class WebScrapingNlpPipelineTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

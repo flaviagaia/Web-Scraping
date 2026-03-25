@@ -1,5 +1,5 @@
 {
-  "article_count": 24,
-  "entity_count": 92,
-  "nlp_status": "spaCy unavailable in this environment: ConfigError"
+  "article_count": 21,
+  "entity_count": 74,
+  "nlp_status": "spaCy unavailable in this environment: ModuleNotFoundError"
 }

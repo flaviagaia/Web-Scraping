@@ -6,7 +6,7 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from .source_config import RULE_BASED_ENTITIES, STOPWORDS_PT
+from .source_config import EXCLUDED_REFERENCE_TERMS, RULE_BASED_ENTITIES, STOPWORDS_PT
 
 
 TOKEN_PATTERN = re.compile(r"\b[a-zA-ZÀ-ÿ]{4,}\b")
@@ -68,15 +68,31 @@ def _extract_entities(text: str, nlp) -> list[dict]:
 
 def _extract_keywords(text: str) -> list[str]:
     tokens = [token.lower() for token in TOKEN_PATTERN.findall(text)]
-    return [token for token in tokens if token not in STOPWORDS_PT]
+    return [
+        token
+        for token in tokens
+        if token not in STOPWORDS_PT and token not in EXCLUDED_REFERENCE_TERMS
+    ]
+
+
+def _contains_excluded_reference(value: str) -> bool:
+    lowered = value.lower()
+    return any(term in lowered for term in EXCLUDED_REFERENCE_TERMS)
 
 
 def analyze_articles(articles_df: pd.DataFrame) -> NlpArtifacts:
     nlp, nlp_status = _load_spacy_model()
 
+    filtered = articles_df[
+        ~articles_df["title"].fillna("").map(_contains_excluded_reference)
+        & ~articles_df["text"].fillna("").map(_contains_excluded_reference)
+        & ~articles_df["summary"].fillna("").map(_contains_excluded_reference)
+        & ~articles_df["url"].fillna("").map(_contains_excluded_reference)
+    ].copy()
+
     entity_rows: list[dict] = []
     keyword_counter: Counter[str] = Counter()
-    enriched = articles_df.copy()
+    enriched = filtered.copy()
 
     entity_counts_per_article = []
     keyword_preview = []
@@ -118,4 +134,3 @@ def analyze_articles(articles_df: pd.DataFrame) -> NlpArtifacts:
         keywords=keyword_df,
         metadata=metadata,
     )
-
